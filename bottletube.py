@@ -89,5 +89,5 @@ if __name__ == '__main__':
 
     # Needs to be customized
     # run(host='your_public_dns_name',
-    run(host='localhost',
+    run(host='ec2-54-162-202-210.compute-1.amazonaws.com',
         port=8080)

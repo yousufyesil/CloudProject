@@ -69,11 +69,12 @@ def do_upload_post():
 
     # Upload to S3
     data = open('images/' + upload.filename, 'rb')
-    s3_resource.Bucket("bottletube").put_object(Key='user_uploads/' + upload.filename,
+    s3_resource.Bucket("yesil-20237852").put_object(Key='user_uploads/' + upload.filename,
                                                                              Body=data,
                                                                              ACL='public-read')
 
     # Write to DB
+
     # some code has to go here later
 
     # Return template

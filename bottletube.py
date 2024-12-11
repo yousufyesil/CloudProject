@@ -55,7 +55,7 @@ def do_upload_post():
 
     try:
         name, ext = os.path.splitext(upload.filename)
-        if ext not in ('.png', '.jpg', '.jpeg'):
+        if ext not in ('.png', '.jpg', '.jpeg','.webp'):
             error_messages.append('File Type not allowed.')
     except:
         error_messages.append('Unknown error.')

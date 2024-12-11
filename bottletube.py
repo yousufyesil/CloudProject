@@ -55,7 +55,7 @@ def do_upload_post():
 
     try:
         name, ext = os.path.splitext(upload.filename)
-        if ext not in ('.png', '.jpg', '.jpeg','.webp'):
+        if ext not in ('.png', '.jpg', '.jpeg','.webp','.pdf'):
             error_messages.append('File Type not allowed.')
     except:
         error_messages.append('Unknown error.')
@@ -91,4 +91,4 @@ if __name__ == '__main__':
     # Needs to be customized
     # run(host='your_public_dns_name',
     run(host='ec2-54-162-202-210.compute-1.amazonaws.com',
-        port=8080)
+        port=80)

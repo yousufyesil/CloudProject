@@ -17,7 +17,7 @@
         <label for="formGroupFileInput">Select File</label>
         <input type="file" class="form-control-file" id="formGroupFileInput" placeholder="Select File" name="file_upload">
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary, submit">Submit</button>
     </form>
 </div>
 

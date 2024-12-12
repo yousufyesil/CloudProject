@@ -104,7 +104,7 @@ if __name__ == '__main__':
         user=secret['username'],
         host=secret['host'],
         password=secret['password'],
-        database=secret['dbname']
+        dbInstanceIdentifier=secret['awsbase']
     )
     connection.autocommit = True
     cursor = connection.cursor()

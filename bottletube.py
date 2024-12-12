@@ -112,7 +112,7 @@ if __name__ == '__main__':
     # Schema setzen
     cursor.execute("SET SCHEMA 'bottletube';")
     connection.commit()
-
+#d
     # S3-Verbindung aufbauen
     s3_resource = resource('s3', region_name='us-east-1')
 

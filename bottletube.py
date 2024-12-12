@@ -17,7 +17,7 @@ import boto3
 def healthcheck():
     return 'I feel lucky'
 
-
+@route('/bonusql')
 @route('/home')
 @route('/')
 def home():

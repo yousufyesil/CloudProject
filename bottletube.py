@@ -88,7 +88,7 @@ if __name__ == '__main__':
         user="postgres",
         host="awsbase.cw6qjfqpxzus.us-east-1.rds.amazonaws.com",
         password="postgres",
-        database="bottletube"
+        database="postgres"
     )
     connection.autocommit = True
     cursor = connection.cursor()

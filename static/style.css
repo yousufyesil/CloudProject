@@ -109,10 +109,12 @@ input[type=number] {
   width: 100%;
   transition: transform 0.3s ease;
 }
-
+/*
 .submit:hover {
-  transform: scale(1.1); /* Vergrößert den Button auf 110% seiner ursprünglichen Größe */
+  transform: scale(1.1); /* Vergrößert den Button auf 110% seiner ursprünglichen Größe
 }
+ */
+
 ul {
   list-style-type: none;
   margin: 0;

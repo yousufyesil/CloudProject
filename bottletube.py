@@ -167,7 +167,7 @@ else:
             user=secret['username'],
             host=secret['host'],
             password=secret['password'],
-            database=secret['dbname']
+            database=secret['postgres']
         )
         connection.autocommit = True
         cursor = connection.cursor()

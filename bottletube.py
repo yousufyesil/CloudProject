@@ -7,7 +7,7 @@ import psycopg2
 import requests
 from botocore.exceptions import ClientError
 
-from bottle import route, run, template, request, app
+from bottle import route, run, template, request, app, static_file
 from boto3 import resource
 
 import boto3
@@ -39,7 +39,9 @@ def home():
 @route('/upload', method='GET')
 def do_upload_get():
     return template('upload.tpl', name='Upload Image')
-
+route('/static/<filename>')
+def serve_static(filename):
+    return static_file(filename, root='./static')
 
 @route('/upload', method='POST')
 def do_upload_post():

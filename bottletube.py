@@ -39,7 +39,7 @@ def home():
 @route('/upload', method='GET')
 def do_upload_get():
     return template('upload.tpl', name='Upload Image')
-route('/static/<filename>')
+@route('/static/<filename>')
 def serve_static(filename):
     return static_file(filename, root='./static')
 

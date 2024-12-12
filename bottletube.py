@@ -117,5 +117,5 @@ if __name__ == '__main__':
     s3_resource = resource('s3', region_name='us-east-1')
 
     # run(host='your_public_dns_name',
-    run(host='ec2-54-91-156-193.compute-1.amazonaws.com',
+    run(host='ip-172-31-33-46.compute-1.amazonaws.com',
         port=80)

@@ -1,9 +1,9 @@
 import boto3
 
 session = boto3.Session(
-    aws_access_key_id='ASIA3DXXHYOMTINCIWWS',
-    aws_secret_access_key='CJpxsKRL+69giTW3nwg3uA+3+WROPLjITGY2e7L3',
-    aws_session_token='IQoJb3JpZ2luX2VjEO7//////////wEaCXVzLXdlc3QtMiJGMEQCIAuVIZ852Ffehld1oWPJgU4Xm8ifFOUI3PN4tngLdXveAiA0JVPCMEzyF9o6Ao3YdGqtqcM3q4cm3ZvivU+vpNiABCq6Agim//////////8BEAAaDDc2Mzk0ODk0MjIzMyIMRHK9ytbPWFarH55nKo4CRjriB6iLL+kUHwBxLt7qv7HW1IUJtfoXX3LDDuiMQgP4l8l9dIrqmNNGycghn9M0NqcA01kOrrSp6BO9g7kQh+fBHYHhb0BjWScf0EuS8cruAz95MRA+TzA7SOUChvHUMIJ2l6ANWsRrdKflgmO0W0xRU+ZzvLqLWUP4pUvvjUDmjlgLPQkFbsgDfheDaHRLQ5lJKUfXghQharivBor1OEXSfsSaGg5lAI3JXUx3asijGRmq5OyaUx2PR21RjkGXBS+l4ZFxsuTOLmXV1PDafxTpzsLsjN2dkmpMfG9vwDTmZeZ0dycp7tIeC2ifV4LcQoAMeA4rw/jeR+RFjxDrYFC/mp4Mb3RW4EHbPJCmMPOi5roGOp4B5kbrKXI6ZM5YoQYmj8fbvxFCXmS7rlLB3IDFBLxDwnB9BmMVTxniD3EKRQKl8XnyuIWzT/EnrndW2j66mhhgo3MVW61RfQs/l38pUWUpqCt37V0LKRJqn4NoCPKZOcYB7qCcruvk1bKzOxJMEfsx7c0XfR3Y/jVxwByhbt75697jsU7hILeZyctL4d7CjVttYWjdtNsYckwGcS6XFgU='
+    aws_access_key_id='ASIA3DXXHYOMY2RM5ZTV',
+    aws_secret_access_key='W2SEQb1VV1GzZeco6ujw1ME1Eu5Bd2qo+TlHRnbJ',
+    aws_session_token='IQoJb3JpZ2luX2VjEAAaCXVzLXdlc3QtMiJHMEUCIEhvHc46p26KsE8rq+DxefN+rZd4rv1HJazH49NpwBLGAiEAwjlJo2DYZt4JnYN4p0cxm4g3GcIbprhc0AVeJy66oXMqugIIuf//////////ARAAGgw3NjM5NDg5NDIyMzMiDI4WUlCefhWfpzg0PCqOAsmLS1N8sXIcZo+en8mRIB7DkKxtRDqzUKde6GfWhk4CVQHSoe7mo+zmAIIi8s4S+GZ0lZz2BqEJAnFKoiWFOGKPTSLarlvL+o926U5bPV/cDJbBReVS3A/UVZ7U+c9xM2D+I0T3WMFa4wKCouiq4ElMbBu6IZOzncTtPlKtq+66AEpf3G50sL+Ed8MNZeukQcDEyjVPGaLjSA4ckQzC6DZUryK/G5nav8KUhg1S+cWtAR6yRe+4ET8n5i9U/7Chv3t6eDI0en7kACF14E+raz6HXBEE3xdCLNr4E1HDjHY8oDA60nMWMgz5IQMDyQ5AYxP5tYjL7+tCwqdLxA2HoK8x5BxIz5qzebKH+jBdYjCfo+q6BjqdAeQiXu7Ak3YkwYwE1OZStlI9pTwAlJzVt9PCaIE+clitYKPf5qrRIESzdvEJ97QKOjH5zNDpWiNF7UMrQenfEPj2gRxhN71WM5jCiCiFRhTSimcMI7BnMqTdeb27MN+p7k+LVN7GAD2ti86QsoXlZEeRDPx28HmxJugJaubKmG8vQFnk28HDEsLtAClTHtaZPUPOvFbJbdPE+fSTpWs='
 )
 
 sqs_client = session.client('sqs', region_name='us-east-1')
@@ -32,6 +32,3 @@ sqs_client.send_message(
 
     }
  )
-print(sqs_client.receive_message(
-    QueueUrl='https://sqs.us-east-1.amazonaws.com/790933937313/Xmas2024'
-))

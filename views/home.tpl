@@ -7,7 +7,7 @@
             <div class="col-lg-3 col-md-4 col-xs-6 mb-4">
                 <div class="card">
                     <img class="card-img-top"
-                         src="https://bottletube.s3.amazonaws.com/{{item.get('filename')}}"
+                         src="https://yesil-20237852.s3.amazonaws.com/{{item.get('filename')}}"
                          alt="{{item.get('category')}}">
                     <div class="card-body">
                         <h5 class="card-title" align="center">{{item.get('category')}}</p>

@@ -74,7 +74,7 @@ def do_upload_post():
                                                                              ACL='public-read')
 
     # Write to DB
-    cursor.execute(f"INSERT INTO image_uploads (url, category) VALUES ('user_uploads/{save_filename}', '{category}');")
+    cursor.execute(f"INSERT INTO image_uploads (url, category) VALUES ('user_uploads/{upload.filename}', '{category}');")
     connection.commit()
     # some code has to go here later
 

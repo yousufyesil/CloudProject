@@ -18,6 +18,8 @@ def healthcheck():
     return 'I feel lucky'
 
 @route('/bonusql')
+def bonusql():
+    return template('bonusql.tpl', name='Bonusql')
 @route('/home')
 @route('/')
 def home():

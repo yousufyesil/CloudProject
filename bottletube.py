@@ -3,7 +3,7 @@
 import time
 import os
 import sys
-
+import psycopg2
 import requests
 from botocore.exceptions import ClientError
 
@@ -22,17 +22,17 @@ def healthcheck():
 @route('/')
 def home():
     # Read Entries from DB
+    items = []
+    cursor.execute("""SELECT * FROM image_uploads ORDER BY id""")
+
+    for record in cursor.fetchall():
+        items.append({
+            'id': record[0],
+            'filename': record[1],
+            'category': record[2]
+        })
     # SQL Query goes here later, now dummy data only
-    items = ({'filename': 'user_uploads/pumpkin-demo.jpg',
-              'category': 'Vegatables'
-              },
-             {'filename': 'user_uploads/cat.jpg',
-              'category': 'Animals'
-              },
-             {'filename': 'user_uploads/camel.jpg',
-              'category': 'Animals'
-              },
-             )
+
     return template('home.tpl', name='BoTube Home', items=items)
 
 
@@ -74,7 +74,8 @@ def do_upload_post():
                                                                              ACL='public-read')
 
     # Write to DB
-
+    cursor.execute(f"INSERT INTO image_uploads (url, category) VALUES ('user_uploads/{save_filename}', '{category}');")
+    connection.commit()
     # some code has to go here later
 
     # Return template
@@ -83,6 +84,18 @@ def do_upload_post():
 
 if __name__ == '__main__':
     # Connect to DB
+    connection = psycopg2.connect(
+        user="postgres",
+        host="awsbase.cw6qjfqpxzus.us-east-1.rds.amazonaws.com",
+        password="postgres",
+        database="bottletube"
+    )
+    connection.autocommit = True
+    cursor = connection.cursor()
+
+    cursor.execute("SET SCHEMA 'bottletube';")
+    connection.commit()
+
     # some code has to go here
 
     # Connect to S3

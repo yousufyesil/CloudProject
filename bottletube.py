@@ -141,7 +141,7 @@ if __name__ == '__main__':
         s3_resource = resource('s3', region_name='us-east-1')
 
         # Entwicklungsserver starten
-        host = requests.get('http://169.254.169.254/latest/meta-data/public-hostname').text
+        host = requests.get('http://34.204.125.209/latest/meta-data/public-hostname').text
         run(host=host, port=80)
     except Exception as e:
         print(f"Startup error: {e}", file=sys.stderr)

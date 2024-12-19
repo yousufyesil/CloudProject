@@ -120,17 +120,22 @@ def do_upload_post():
     # Return template
     return template('upload_success.tpl', name='Upload Image')
 
+
 if __name__ == '__main__':
-    # Connect to DB
-    # AWS Secrets Manager Setup
+    run(host=requests.get('http://169.254.169.254/latest/meta-data/public-hostname').text,
+        port=80)
+
+if True:  # wird immer ausgeführt
+    import os
+    from bottle import default_app
+
+    # Datenbank- und AWS-Konfiguration
     sm_session = session.Session()
     client = sm_session.client(
         service_name='secretsmanager',
         region_name='us-east-1'
     )
 
-    # Secrets aus dem AWS Secrets Manager abrufen
-    # Der SecretId 'PostgresBottle' enthält die Datenbank-Zugangsdaten
     secret = json.loads(
         client.get_secret_value(SecretId='ddaypaper')
         .get('SecretString')
@@ -148,15 +153,8 @@ if __name__ == '__main__':
     cursor.execute("SET SCHEMA 'bottletube';")
     connection.commit()
 
-    # some code has to go here
-    # Connect to S3
+    # S3 Verbindung
     s3_resource = resource('s3', region_name='us-east-1')
 
-    run(host=requests.get('http://169.254.169.254/latest/meta-data/public-hostname').text,
-        port=80)
-
-if True:  # soll immer ausgeführt werden
-    import os
-    from bottle import default_app
     os.chdir(os.path.dirname(__file__))
     application = default_app()

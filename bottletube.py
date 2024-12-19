@@ -22,6 +22,7 @@ def bonusql():
     return template('bonusql.tpl', name='Bonusql')
 
 @route('/delete')
+pythonCopy@route('/delete')
 def delete(id):
     try:
         # Zuerst die URL des Bildes aus der Datenbank abrufen
@@ -36,7 +37,9 @@ def delete(id):
             connection.commit()
 
         return template('home.tpl', name='BoTube Home', items=[])
-
+    except Exception as e:
+        print(f"Error deleting image: {str(e)}")
+        return template('home.tpl', name='BoTube Home', items=[])
 @route('/home')
 @route('/')
 def home():

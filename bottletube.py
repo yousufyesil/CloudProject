@@ -23,7 +23,6 @@ def bonusql():
 
 @route('/delete')
 @route('/delete/<id:int>')
-d@route('/delete/<id:int>')
 
 
 @route('/delete/<id:int>')

@@ -22,7 +22,6 @@ def bonusql():
     return template('bonusql.tpl', name='Bonusql')
 
 @route('/delete')
-pythonCopy@route('/delete')
 def delete(id):
     try:
         # Zuerst die URL des Bildes aus der Datenbank abrufen

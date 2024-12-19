@@ -24,30 +24,26 @@ def bonusql():
 @route('/delete')
 @route('/delete/<id:int>')
 d@route('/delete/<id:int>')
+
+
+@route('/delete/<id:int>')
 def delete(id):
     try:
-        # Zuerst die URL des Bildes aus der Datenbank abrufen
         cursor.execute("SELECT url FROM image_uploads WHERE id = %s", (id,))
         result = cursor.fetchone()
         if result:
             file_url = result[0]
-            # Bild aus S3 löschen
             s3_resource.Object("yesil-20237852", file_url).delete()
-            # Eintrag aus der Datenbank löschen
             cursor.execute("DELETE FROM image_uploads WHERE id = %s", (id,))
             connection.commit()
 
-        # Aktualisierte Liste der Bilder abrufen
-        items = []
-        cursor.execute("""SELECT * FROM image_uploads ORDER BY id""")
-        for record in cursor.fetchall():
-            items.append({
-                'id': record[0],
-                'filename': record[1],
-                'category': record[2]
-            })
+        from bottle import redirect
+        return redirect('/')
 
-        return template('home.tpl', name='BoTube Home', items=items)
+    except Exception as e:
+        print(f"Error deleting image: {str(e)}")
+        from bottle import redirect
+        return redirect('/')
     except Exception as e:
         print(f"Error deleting image: {str(e)}")
         # Auch im Fehlerfall die aktuelle Liste anzeigen

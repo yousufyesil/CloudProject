@@ -22,8 +22,20 @@ def bonusql():
     return template('bonusql.tpl', name='Bonusql')
 
 @route('/delete')
-def delete():
-    return template("/")
+def delete(id):
+    try:
+        # Zuerst die URL des Bildes aus der Datenbank abrufen
+        cursor.execute("SELECT url FROM image_uploads WHERE id = %s", (id,))
+        result = cursor.fetchone()
+        if result:
+            file_url = result[0]
+            # Bild aus S3 löschen
+            s3_resource.Object("yesil-20237852", file_url).delete()
+            # Eintrag aus der Datenbank löschen
+            cursor.execute("DELETE FROM image_uploads WHERE id = %s", (id,))
+            connection.commit()
+
+        return template('home.tpl', name='BoTube Home', items=[])
 
 @route('/home')
 @route('/')

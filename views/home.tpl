@@ -12,9 +12,9 @@
                     <div class="card-body">
                         <h5 class="card-title" align="center">{{item.get('category')}}</h5>
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title" align="center">{{item.get('id')}}</h5>
-                    </div>
+                      <div class="text-center">
+                            <a href="/delete/{{item.get('id')}}" class="btn btn-danger">Delete</a>
+                      </div>
                 </div>
             </div>
         % end

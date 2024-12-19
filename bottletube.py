@@ -15,7 +15,8 @@ import boto3
 @route('/hello')
 @route('/healthcheck')
 def healthcheck():
-    return 'I feel lucky'
+    public_dns = requests.get('http://169.254.169.254/latest/meta-data/public-hostname').text
+    return f'I feel lucky @ {public_dns}'
 
 @route('/bonusql')
 def bonusql():

@@ -21,6 +21,10 @@ def healthcheck():
 def bonusql():
     return template('bonusql.tpl', name='Bonusql')
 
+@route('/delete')
+def delete():
+    return template("/")
+
 @route('/home')
 @route('/')
 def home():

@@ -23,6 +23,7 @@ def bonusql():
 
 @route('/delete')
 @route('/delete/<id:int>')
+d@route('/delete/<id:int>')
 def delete(id):
     try:
         # Zuerst die URL des Bildes aus der Datenbank abrufen
@@ -36,10 +37,29 @@ def delete(id):
             cursor.execute("DELETE FROM image_uploads WHERE id = %s", (id,))
             connection.commit()
 
-        return template('home.tpl', name='BoTube Home', items=[])
+        # Aktualisierte Liste der Bilder abrufen
+        items = []
+        cursor.execute("""SELECT * FROM image_uploads ORDER BY id""")
+        for record in cursor.fetchall():
+            items.append({
+                'id': record[0],
+                'filename': record[1],
+                'category': record[2]
+            })
+
+        return template('home.tpl', name='BoTube Home', items=items)
     except Exception as e:
         print(f"Error deleting image: {str(e)}")
-        return template('home.tpl', name='BoTube Home', items=[])
+        # Auch im Fehlerfall die aktuelle Liste anzeigen
+        items = []
+        cursor.execute("""SELECT * FROM image_uploads ORDER BY id""")
+        for record in cursor.fetchall():
+            items.append({
+                'id': record[0],
+                'filename': record[1],
+                'category': record[2]
+            })
+        return template('home.tpl', name='BoTube Home', items=items)
 @route('/home')
 @route('/')
 def home():

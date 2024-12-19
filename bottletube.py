@@ -120,4 +120,4 @@ if __name__ == '__main__':
 
     # run(host='your_public_dns_name',
     run(host='ec2-34-204-125-209.compute-1.amazonaws.com',
-        port=80)
+        port=5050)

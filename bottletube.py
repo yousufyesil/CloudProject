@@ -18,9 +18,7 @@ def healthcheck():
     public_dns = requests.get('http://169.254.169.254/latest/meta-data/public-hostname').text
     return f'I feel lucky @ {public_dns}'
 
-@route('/bonusql')
-def bonusql():
-    return template('bonusql.tpl', name='Bonusql')
+
 
 @route('/delete')
 @route('/delete/<id:int>')
@@ -122,9 +120,9 @@ def do_upload_post():
     return template('upload_success.tpl', name='Upload Image')
 
 
-if __name__ == '__main__':
-    run(host=requests.get('http://169.254.169.254/latest/meta-data/public-hostname').text,
-        port=80)
+#if __name__ == '__main__':
+ #   run(host=requests.get('http://169.254.169.254/latest/meta-data/public-hostname').text,
+  #      port=80)
 
 if True:  # wird immer ausgeführt
     import os
